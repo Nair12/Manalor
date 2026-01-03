@@ -1,0 +1,79 @@
+.image-wrapper {
+  position: relative;
+  display: block;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 95%;
+  background: rgba(0, 0, 0, 0.5); /* полупрозрачный фон */
+  color: rgb(226, 13, 13);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0; 
+  transition: opacity 0.3s ease;
+  font-size: 25px;
+}
+
+.image-wrapper:hover .image-overlay {
+  opacity: 1;
+}
+
+
+.my-masonry-grid {
+  display: flex;
+  margin-left: -15px; 
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 15px; 
+  background-clip: padding-box;
+}
+.my-masonry-grid_column > div {
+  margin-bottom: 15px;
+}
+
+
+
+.image-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); 
+    gap: 15px;
+    grid-template-rows: masonry;
+
+  }
+  
+  .image-item {
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    display: block;
+
+    
+  }
+
+.gallery-head{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.search-input{
+    
+    width: 500px;
+    height: 30px;
+    font-size: 20px;
+    font-weight: 600;
+    border: 2px black;
+
+    
+}
+

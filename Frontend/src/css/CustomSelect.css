@@ -1,0 +1,44 @@
+.custom-select-wrapper {
+  width: 200px;
+  position: relative;
+  font-family: sans-serif;
+}
+
+.custom-select {
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s;
+}
+
+.arrow.open {
+  transform: rotate(180deg);
+}
+
+.options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border: 1px solid #ccc;
+  border-top: none;
+  background: white;
+  z-index: 10;
+}
+
+.option {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.option:hover {
+  background: #f0f0f0;
+}
