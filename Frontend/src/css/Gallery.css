@@ -13,7 +13,7 @@
   left: 0;
   width: 100%;
   height: 95%;
-  background: rgba(0, 0, 0, 0.5); /* полупрозрачный фон */
+  background: rgba(0, 0, 0, 0.5); 
   color: rgb(226, 13, 13);
   display: flex;
   justify-content: center;
@@ -25,7 +25,14 @@
 
 .image-wrapper:hover .image-overlay {
   opacity: 1;
+
 }
+
+.image-wrapper:hover {
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+}
+
 
 
 .my-masonry-grid {

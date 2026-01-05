@@ -104,7 +104,7 @@ function Details(){
 
     return(
 
-    <div className="image-details" style={{paddingTop:"1rem"}}>
+    <div className="image-details" style={{padding:"4em"}}>
     
       <div className="image-info">
         <h1>{imageDetails?.name}</h1>

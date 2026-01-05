@@ -79,7 +79,7 @@ function Gallery() {
       >
         <input
           className="search-input"
-          style={{ width: "500px", height: "50px",borderRadius:"10px" }}
+          style={{ width: "50%", height: "50px",borderRadius:"10px",background:"rgba(239, 228, 228, 0.9)",color:"#000",fontSize:"20px",padding:"2"}}
           placeholder="Search🔍"
           value={search}
           onChange={(e) => handleSearch(e.target.value)}

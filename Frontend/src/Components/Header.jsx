@@ -26,7 +26,7 @@ function Header(){
 
 
     return(
-    <header className='header-body' style={{position:"fixed",zIndex:1000}} >  
+    <header className='header-body' style={{position:"fixed",zIndex:1000,width:"100%"}}>   
         <div className="input">  
   <button className="value" onClick={()=>{authorized?navigate(userLink):navigate("/Login")}}>
     <svg

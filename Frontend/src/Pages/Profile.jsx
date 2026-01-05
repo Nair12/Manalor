@@ -34,7 +34,7 @@ function Profile() {
   const images = userData.images;
 
   return (
-    <div>
+    <div style={{padding:"2rem"}}>
 
 <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
   <div style={{ padding: "20px", width: "300px", textAlign: "center" }}>
