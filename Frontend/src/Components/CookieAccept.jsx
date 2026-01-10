@@ -16,7 +16,7 @@ const CookieAccept = (props) => {
 
   return (
     <StyledWrapper>
-      <div style= {{position:"fixed"}}className="cookie-card">
+      <div style= {{position:"fixed",zIndex:"9999",left:"10%",transform:"translateX(-50%)",bottom:"20px"}}className="cookie-card">
         <span className="title">🍪 Cookie Notice</span>
         <p className="description">We use cookies to ensure that we give you the best experience on our website. <a href="#">Read cookies policies</a>. </p>
         <div className="actions">

@@ -47,7 +47,7 @@ function AnotherProfile() {
     }
 
     return (
-        <div>
+        <div style={{padding:"2rem"}}>
 
             <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                 <div style={{ padding: "20px", width: "300px", textAlign: "center" }}>
@@ -73,14 +73,14 @@ function AnotherProfile() {
 
                 </div>
             </div>
-            <hr/>
+          
 
             
             <div className="tab-navigation" style={{display:"flex",flexDirection:"row",
                                                   alignContent: "center",justifyContent:"center",
                                                   border: "2px solid #333",
                                                   boxShadow:" 5px 5px 10px rgba(0, 0, 0, 0.4)",
-                                                  gap:"15px",borderRadius:"15px"}}>
+                                                  gap:"15px",borderRadius:"15px",padding:"10px",maxWidth:"600px",margin:"0 auto"}}>
                   <button
                             className="btn add"
                             onClick={() => null}
@@ -119,15 +119,17 @@ function AnotherProfile() {
                                 key={idx}
                                 src={baseUrl + `/Image/${img.guid}`}
                                 alt={`img-${idx}`}
-                                style={{ width: "100%", marginBottom: "15px", borderRadius: "10px", display: "block" }}
+                                style={{ width: "100%", marginBottom: "15px", borderRadius: "10px", display: "block"}}
                                 onClick={() => navigate("/Details/" + img.guid)}
+                                
+
                             />
                         ))}
                     </div>
                 ) : (
                     <div style={{display:"flex",flexDirection:"column",
                                  alignContent: "center", maxWidth:"15rem",maxHeight:"auto",justifyContent:"center"}}>
-                        <img src="https://cdn-icons-png.flaticon.com/512/61/61898.png" alt="User dont make pictrue"/>
+                        <img src="https://cdn-icons-png.flaticon.com/512/61/61898.png" alt="User does not publish any picture"/>
                         <h1>No Pictures</h1>
                         
                     </div>
