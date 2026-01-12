@@ -43,7 +43,7 @@ function CustomSelect({guid}) {
 
   return (
     <>
-      <Dropdown show={show} onToggle={(isOpen) => setShow(isOpen)} style={{ marginTop: "2rem", display: "inline-block" }}>
+      <Dropdown show={show} onToggle={(isOpen) => setShow(isOpen)} style={{ display: "inline-block" }}>
         <Dropdown.Toggle variant="secondary" id="dropdown-basic-button" style={{ width: "100%", height: "auto" }}>
           Edit
         </Dropdown.Toggle>

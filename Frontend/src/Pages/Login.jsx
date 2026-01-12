@@ -42,14 +42,12 @@ const SubmitHandler = async () => {
     console.log("Form sumbited")
     const userData = new FormData();
     
-    console.log(password)
-    console.log(email)
-
     userData.append("Password",password);
     userData.append("Email",email);
     const result = await dispatch(LoginUser(userData))
     
-    console.log(result)
+    
+    
 
     if(LoginUser.rejected.match(result)){
       setMessage("Login failed, please check your login or password")
@@ -86,7 +84,7 @@ const SubmitHandler = async () => {
           </div>
         </div>
         <button className="button-confirm" onClick={(e)=>{
-            e.preventDefault()
+          e.preventDefault();
             SubmitHandler()
         }}>Let`s go →</button>
          <Link to={"/Register"}>Dont have account? Register here!</Link>

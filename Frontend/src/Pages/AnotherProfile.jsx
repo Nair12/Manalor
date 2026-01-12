@@ -1,10 +1,9 @@
-import { use, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
 import { GetUserDataByName } from "../Redux/UserSlice";
 import Loader from "../Components/Loader";
-import { baseUrl } from "../config";
-import { CardImgOverlay } from "react-bootstrap";
+import MassonryGrid from "../Components/MassonryGrid";
 
 
 
@@ -21,14 +20,8 @@ function AnotherProfile() {
         const fetchUserData = async () => {
 
             const res = await dispatch(GetUserDataByName(name))
-            console.log("response " + res.payload)
-
 
             const userData = res.payload
-            console.log("User NAME" + userData.user.name)
-
-            console.log("Owner" + userData.user.owner)
-
 
             setUserData(res.payload)
 
@@ -96,36 +89,18 @@ function AnotherProfile() {
                         >
                             Likes
                         </button>
-
-                       <button
-                            className="btn add"
-                            onClick={() => null}
-                            style={{ width: "200px", marginTop: "10px" }}
-                        >
-                            Settings
-                        </button>
-
+                        
             </div>
 
 
             <h1 style={{ textAlign: "center", marginTop: "100px" }}>{userData.user.name} Gallery</h1>
 
-            <div className="userImage" style={{ paddingTop: "30px", columnCount: "6", columnGap: "10px", marginTop: "150px" }}>
+            <div className="userImage" style={{ paddingTop: "30px",marginTop: "150px" }}>
+
+               
 
                 {userData.images?.length > 0 ?(
-                    <div style={{ marginTop: "20px" }}>
-                        {userData.images.map((img, idx) => (
-                            <img
-                                key={idx}
-                                src={baseUrl + `/Image/${img.guid}`}
-                                alt={`img-${idx}`}
-                                style={{ width: "100%", marginBottom: "15px", borderRadius: "10px", display: "block"}}
-                                onClick={() => navigate("/Details/" + img.guid)}
-                                
-
-                            />
-                        ))}
-                    </div>
+                       <MassonryGrid images={userData.images} baseUrl={import.meta.env.VITE_BASE_URL}/>
                 ) : (
                     <div style={{display:"flex",flexDirection:"column",
                                  alignContent: "center", maxWidth:"15rem",maxHeight:"auto",justifyContent:"center"}}>
@@ -133,7 +108,7 @@ function AnotherProfile() {
                         <h1>No Pictures</h1>
                         
                     </div>
-                )}
+                    )}
 
                 
 
