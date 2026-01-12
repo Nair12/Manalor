@@ -23,10 +23,7 @@ const Register = () => {
   console.log("Form sumbited")
   const userData = new FormData();
 
-  console.log(name)
-  console.log(password)
-  console.log(email)
-  console.log(avatar)
+
 
   userData.append("Name",name)
   userData.append("Password",password);
