@@ -1,5 +1,4 @@
 import { asyncThunkCreator, createAsyncThunk, createSlice, freeze } from "@reduxjs/toolkit";
-import { baseUrl } from "../config";
 import { useNavigate } from "react-router-dom";
 
 
@@ -8,10 +7,9 @@ import { useNavigate } from "react-router-dom";
 export const AddImage = createAsyncThunk(
     'image/add',
     async (formData,thunkApi) =>{
-        console.log("Thunk AddImage is available")
        try{
 
-       const res = await fetch(baseUrl+'/Image',
+       const res = await fetch(import.meta.env.VITE_BASE_URL+'/Image',
        {
         method: "POST",
         credentials: 'include',
@@ -55,7 +53,7 @@ export const GetImages = createAsyncThunk(
         
            
 
-            const res = await fetch(baseUrl+'/Image/Pagination/'+lastLoadedAt,{
+            const res = await fetch(import.meta.env.VITE_BASE_URL+'/Image/Pagination/'+lastLoadedAt,{
                 method: "GET",
                 credentials: "include",
               }
@@ -86,8 +84,7 @@ export const GetImageDeatils = createAsyncThunk(
 
        async(uid,thunkApi) =>{
        try{
-        console.log("request started")
-        const res = await fetch(baseUrl+'/Image/Details/'+uid,{
+        const res = await fetch(import.meta.env.VITE_BASE_URL+'/Image/Details/'+uid,{
             method:"GET",
             credentials:"include"
         }
@@ -116,8 +113,7 @@ export const DownloadImage  = createAsyncThunk(
     "image/download",
     async(id,thunkApi) =>{
         try{
-            console.log("download started")
-            const res = fetch(baseUrl+'/api/Image/Download/'+id)
+            const res = fetch(import.meta.env.VITE_BASE_URL+'/api/Image/Download/'+id)
 
             if(!res.ok) throw new Error("Download failed")
 
@@ -140,7 +136,7 @@ export const LikeImage = createAsyncThunk(
       async (imageId,thunkApi)=>{
         try{
 
-            const res = await fetch(baseUrl+'/Image/Like/'+imageId,{
+            const res = await fetch(import.meta.env.VITE_BASE_URL+'/Image/Like/'+imageId,{
                 method:"POST",
                 credentials:"include",
             })
@@ -167,7 +163,7 @@ export const CommentImage = createAsyncThunk(
      'Image/Comment',
      async ({ imageId, text },thunkApi)=>{
         try{
-            const res = await fetch(baseUrl+'/Image/Comment/'+imageId,{
+            const res = await fetch(import.meta.env.VITE_BASE_URL+'/Image/Comment/'+imageId,{
                 method:"POST",
                 credentials:"include",
                 headers:{
@@ -199,7 +195,7 @@ export const RenameImage = createAsyncThunk(
    'Image/Rename',
    async({guid,newNameValue},thunkApi)=>{
          
-    const res = await fetch(baseUrl+'/Image/'+guid,{
+    const res = await fetch(import.meta.env.VITE_BASE_URL+'/Image/'+guid,{
         method: "PATCH",
         credentials:"include",
          headers:{
@@ -225,7 +221,7 @@ export const RenameImage = createAsyncThunk(
 export const DeleteImage = createAsyncThunk(
     'Image/Delete',
     async(guid,thunkApi)=>{
-       const res =  await fetch(baseUrl+'/Image/'+guid,{
+       const res =  await fetch(import.meta.env.VITE_BASE_URL+'/Image/'+guid,{
             method:"DELETE",
             credentials:"include",
             headers:{
@@ -278,13 +274,9 @@ const ImageSlice = createSlice({
         .addCase(AddImage.fulfilled,(state,action)=>{
             state.images.push(action.payload)
             state.loading = false;
-            console.log("Adding end")
-            console.log("payload:" + action.payload)
-            console.log("state: "+JSON.stringify(state.images))
         })
         .addCase(AddImage.rejected,(state,action)=>{
            state.loading = false;
-           console.log(action.payload)
 
         })
         .addCase(GetImages.pending,(state)=>{
@@ -298,7 +290,6 @@ const ImageSlice = createSlice({
           state.loading = false;
         })
         .addCase(RenameImage.fulfilled,(state,action)=>{
-
         })
         
     }

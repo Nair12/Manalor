@@ -1,7 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Link } from "react-router-dom";
 import Cookies from 'js-cookie';
-import { baseUrl } from "../config";
+
+
+const baseUrl = import.meta.env.VITE_BASE_URL ? import.meta.env.VITE_BASE_URL : 'http://localhost:5020/api';
 
 export const RegisterUser = createAsyncThunk(
   'auth/register',
@@ -30,7 +32,7 @@ export const LoginUser = createAsyncThunk(
      async(formData,thunkApi)=>{
         try{
             const res = await fetch(baseUrl+'/User/Login',{
-                method: "Post",
+                method: "POST",
                 credentials: 'include',
                 body:formData
             }           
@@ -148,7 +150,7 @@ export const GetUserDataByName = createAsyncThunk(
 const UserSlice = createSlice({
   name: 'User',
   initialState: {
-    userData: null,
+   userData: null,
    authorized: false,
    error: null,
    loading: false,
@@ -175,11 +177,10 @@ const UserSlice = createSlice({
     builder
       .addCase(RegisterUser.pending, (state) => {
         state.error = null;
-        console.log("Register started")
       })
       .addCase(RegisterUser.fulfilled, (state, action) => {
         state.userData = action.payload;
-        console.log("Register sucsess")
+       
       })
       .addCase(RegisterUser.rejected, (state, action) => {
         state.error = action.payload;
@@ -189,28 +190,28 @@ const UserSlice = createSlice({
         GetUserData()
       })
       .addCase(GetUserData.pending,(state)=>{
-        console.log("Getting user data started")
+      
         state.loading = true;
       })
       .addCase(GetUserData.fulfilled,(state,action)=>{
         state.userData = action.payload;
         state.userLink = "/UserProfile/"+state.userData.user.name
-        console.log(state.userData)
+      
         state.authorized = true;
         state.loading = false;
         state.isLoaded = true;
-        console.log("getting user data completed")
+       
       })
       .addCase(GetUserData.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
         state.isLoaded = true;
-        console.log("Error", action.payload);
+        
       })
       .addCase(GetUserDataByName.pending,(state)=>{
         state.loading = true
         state.isLoaded = false
-        console.log(GetUserDataByName.name)
+      
         
       })
       .addCase(GetUserDataByName.fulfilled,(state)=>{
