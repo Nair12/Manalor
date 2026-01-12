@@ -44,7 +44,7 @@ function CommentItem(props){
         alignItems: "flex-start" 
       }}
     >
-      {/* Аватар */}
+      {/* Avatar */}
       <img
         src={`data:image/jpeg;base64,${props.userAvatar}`}
         className="user-avatar"
@@ -54,13 +54,13 @@ function CommentItem(props){
         
       />
 
-      {/* Контент комментария */}
+      {/* Comment content */}
       <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "8px" }}>
           <h3 style={{ margin: 0,fontSize:"17px" }}>{props.Name}</h3>
           <p style={{ margin: 0, fontSize: "12px", color: "#888" }}>{formattedDate}</p>
         </div>
-        <p style={{ margin: 0 }}>
+        <p style={{ margin: 2 }}>
           <strong>{props.comment}</strong>
         </p>
       </div>

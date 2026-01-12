@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Masonry from "react-masonry-css"; // 🆕 библиотека
 import { GetImages } from "../Redux/ImageSlice";
 import "../css/Gallery.css";
 import ImageItem from "../Components/ImageItem";
 import Loader from "../Components/Loader";
 import useScrollEnd from "../Components/Scrole";
-import { baseUrl } from "../config";
+import MassonryGrid from "../Components/MassonryGrid";
 
 function Gallery() {
   const dispatch = useDispatch();
@@ -64,13 +63,6 @@ function Gallery() {
   }, []);
 
   
-  const breakpointColumnsObj = {
-    default: 7, 
-    1200: 5,
-    800: 3,
-    500: 2
-  };
-
   return (
     <div style={{paddingTop:"3rem"}}>
       <div
@@ -86,23 +78,8 @@ function Gallery() {
         />
       </div>
 
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
-        {imagesDisplay.map((item) => {
-          const url = baseUrl+`/Image/${item.guid}`;
-          return (
-            <ImageItem
-              key={item.guid}
-              url={url}
-              name={item.imageName}
-              id={item.guid}
-            />
-          );
-        })}
-      </Masonry>
+      <MassonryGrid images={imagesDisplay} baseUrl={import.meta.env.VITE_BASE_URL}/>
+
 
       {loading &&!pictureOver&& (
         <div style={{ textAlign: "center", padding: "20px" }}>

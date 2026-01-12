@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react"
-import { baseUrl } from "../config";
 import "../css/confirm.css"
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -13,8 +12,6 @@ function Confirm(){
     const location = useLocation()
 
     const email  = location.state?.email;
-
-    console.log(email)
 
 
     const[sendAgain,setAgain] = useState(false)
@@ -70,7 +67,7 @@ function Confirm(){
     {
       
       
-        const res = await fetch(baseUrl+"/User/SendConfirm",
+        const res = await fetch(import.meta.env.VITE_BASE_URL+"/User/SendConfirm",
             {
                  method:"POST",
                  headers:{
@@ -89,12 +86,10 @@ function Confirm(){
 
        const code = digit1 + digit2 + digit3 + digit4 + digit5 + digit6
 
-       console.log(code)
 
 
 
-
-          const res = await fetch(baseUrl+"/User/Confirm",
+          const res = await fetch(import.meta.env.VITE_BASE_URL+"/User/Confirm",
             {
                 method:"POST",
                 headers:{

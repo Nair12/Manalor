@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { GetUserData } from "../Redux/UserSlice";
 import { useNavigate } from "react-router-dom";
 import Loader from "../Components/Loader";
-import { baseUrl } from "../config";
 
 import "../css/Gallery.css"
 import "../css/Profile.css"
@@ -66,7 +65,7 @@ function Profile() {
       {images.map((img, idx) => (
         <img
           key={idx}
-          src={baseUrl+`/Image/${img.guid}`}
+          src={import.meta.env.VITE_BASE_URL+`/Image/${img.guid}`}
           alt={`img-${idx}`}
           style={{ width: "100%", marginBottom: "15px", borderRadius: "10px", display: "block",cursor:"pointer" }}
           onClick={() => navigate("/Details/" + img.guid)}

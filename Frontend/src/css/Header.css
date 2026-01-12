@@ -1,12 +1,14 @@
-/* From Uiverse.io by ErzenXz */ 
 .input {
   display: flex;
   flex-direction: row;
-  width: fit-content;
+  width: 100%;
+  flex-wrap: wrap;
   background-color: #0d1117;
-  justify-content: center;
+  justify-content: space-between;
   border-radius: 5px;
   gap: 7.5px;
+  z-index: 10;
+  position: static;
 }
 .value {
   background-color: transparent;
